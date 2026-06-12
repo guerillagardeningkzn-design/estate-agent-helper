@@ -1,1 +1,165 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
+/* Custom base styles */
+@layer base {
+  body {
+    @apply text-neutral-900 bg-neutral-50;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  h1 { @apply text-3xl md:text-4xl; }
+  h2 { @apply text-2xl md:text-3xl; }
+  h3 { @apply text-xl md:text-2xl; }
+  h4 { @apply text-lg md:text-xl; }
+
+  a {
+    @apply text-brand-600 hover:text-brand-700 transition-colors;
+  }
+
+  button {
+    @apply transition-colors duration-200;
+  }
+
+  input, textarea, select {
+    @apply bg-white border border-neutral-200 rounded-md px-3 py-2 text-neutral-900;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent;
+  }
+
+  textarea {
+    @apply font-sans;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-md font-medium bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-md font-medium border border-neutral-300 text-neutral-900 hover:bg-neutral-100 transition-colors;
+  }
+
+  .btn-small {
+    @apply px-3 py-1.5 text-sm rounded-md font-medium;
+  }
+
+  .card {
+    @apply bg-white border border-neutral-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .card-compact {
+    @apply bg-white border border-neutral-200 rounded-lg p-4;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-brand-50 text-brand-700;
+  }
+
+  .badge-success {
+    @apply badge bg-green-50 text-green-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-50 text-amber-700;
+  }
+
+  .badge-error {
+    @apply badge bg-red-50 text-red-700;
+  }
+
+  .input-group {
+    @apply space-y-2;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-neutral-700;
+  }
+
+  .divider {
+    @apply border-t border-neutral-200 my-6;
+  }
+
+  .container-main {
+    @apply max-w-6xl mx-auto px-4 py-8;
+  }
+
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+}
+
+/* Utility animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .text-truncate {
+    @apply truncate;
+  }
+
+  .text-truncate-2 {
+    @apply line-clamp-2;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(107, 93, 81, 0.1);
+  border-top: 3px solid var(--color-brand-600);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile-first responsiveness */
+@media (max-width: 768px) {
+  .container-main {
+    @apply px-3 py-4;
+  }
+
+  h1 { @apply text-2xl; }
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+}
